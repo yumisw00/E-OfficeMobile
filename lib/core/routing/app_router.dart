@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../presentation/screens/dashboard_screen.dart';
 import '../../presentation/screens/detail_surat_screen.dart';
+import '../../presentation/screens/pdf_viewer_screen.dart';
 import '../../data/models/surat_model.dart';
 
 part 'app_router.g.dart';
@@ -25,6 +26,13 @@ GoRouter appRouter(Ref ref) {
         builder: (context, state) {
           final surat = state.extra as SuratModel;
           return DetailSuratScreen(surat: surat);
+        },
+      ),
+      GoRoute(
+        path: '/pdf',
+        builder: (context, state) {
+          final pdfUrl = state.extra as String;
+          return PdfViewerScreen(pdfUrl: pdfUrl);
         },
       ),
     ],

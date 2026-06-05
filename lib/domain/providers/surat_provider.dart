@@ -10,7 +10,27 @@ SuratRepository suratRepository(Ref ref) {
 }
 
 @riverpod
-Future<List<SuratModel>> suratMasuk(Ref ref) async {
-  final repository = ref.watch(suratRepositoryProvider);
-  return repository.getSuratMasuk();
+class SuratMasuk extends _$SuratMasuk {
+  @override
+  FutureOr<List<SuratModel>> build() async {
+    final repository = ref.watch(suratRepositoryProvider);
+    return repository.getSuratMasuk();
+  }
+
+  Future<void> approveSurat(String id) async {
+    // Get the current state
+    final currentList = state.value;
+    if (currentList == null) return;
+
+    // Update the list immutably
+    final updatedList = currentList.map((surat) {
+      if (surat.id == id) {
+        return surat.copyWith(status: 'selesai');
+      }
+      return surat;
+    }).toList();
+
+    // Update the state
+    state = AsyncValue.data(updatedList);
+  }
 }

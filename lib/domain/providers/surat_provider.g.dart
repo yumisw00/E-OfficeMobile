@@ -51,17 +51,11 @@ final class SuratRepositoryProvider
 
 String _$suratRepositoryHash() => r'195821e2d7a6847e8f75ae9136be9ac93c7147ef';
 
-@ProviderFor(suratMasuk)
+@ProviderFor(SuratMasuk)
 final suratMasukProvider = SuratMasukProvider._();
 
 final class SuratMasukProvider
-    extends
-        $FunctionalProvider<
-          AsyncValue<List<SuratModel>>,
-          List<SuratModel>,
-          FutureOr<List<SuratModel>>
-        >
-    with $FutureModifier<List<SuratModel>>, $FutureProvider<List<SuratModel>> {
+    extends $AsyncNotifierProvider<SuratMasuk, List<SuratModel>> {
   SuratMasukProvider._()
     : super(
         from: null,
@@ -78,14 +72,26 @@ final class SuratMasukProvider
 
   @$internal
   @override
-  $FutureProviderElement<List<SuratModel>> $createElement(
-    $ProviderPointer pointer,
-  ) => $FutureProviderElement(pointer);
-
-  @override
-  FutureOr<List<SuratModel>> create(Ref ref) {
-    return suratMasuk(ref);
-  }
+  SuratMasuk create() => SuratMasuk();
 }
 
-String _$suratMasukHash() => r'98826dae6fa701c35cf014eebed3328ef8aba659';
+String _$suratMasukHash() => r'58176300cb27fcbe5acb1d143e1889e4cc3572f3';
+
+abstract class _$SuratMasuk extends $AsyncNotifier<List<SuratModel>> {
+  FutureOr<List<SuratModel>> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref =
+        this.ref as $Ref<AsyncValue<List<SuratModel>>, List<SuratModel>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<List<SuratModel>>, List<SuratModel>>,
+              AsyncValue<List<SuratModel>>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}
