@@ -18,7 +18,7 @@ void main() {
     // Verify that the initial dashboard is rendered (or at least the app starts)
     // Since we use MaterialApp.router, we might need to pump and settle
     await tester.pumpAndSettle();
-    
+
     expect(find.text('E-Office Dashboard'), findsOneWidget);
   });
 }

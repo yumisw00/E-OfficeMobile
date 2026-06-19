@@ -81,7 +81,7 @@ abstract class _$SuratMasuk extends $AsyncNotifier<List<SuratModel>> {
   FutureOr<List<SuratModel>> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<SuratModel>>, List<SuratModel>>;
     final element =
@@ -92,6 +92,6 @@ abstract class _$SuratMasuk extends $AsyncNotifier<List<SuratModel>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

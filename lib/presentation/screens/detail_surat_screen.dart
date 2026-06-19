@@ -43,24 +43,116 @@ class DetailSuratScreen extends ConsumerWidget {
         ? null // Hide button if already approved
         : Padding(
             padding: const EdgeInsets.all(16.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: FilledButton(
-                onPressed: () {
-                  ref.read(suratMasukProvider.notifier).approveSurat(currentSurat.id);
-                  _showApprovalModal(context, currentSurat);
-                },
-                style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  backgroundColor: Colors.green,
+            child: Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () => _showDisposisiSheet(context, ref, currentSurat),
+                    icon: const Icon(Icons.send),
+                    label: const Text('Disposisi'),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                  ),
                 ),
-                child: const Text(
-                  'Setujui & Tandatangani Surat',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: FilledButton(
+                    onPressed: () {
+                      ref.read(suratMasukProvider.notifier).approveSurat(currentSurat.id);
+                      _showApprovalModal(context, currentSurat);
+                    },
+                    style: FilledButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      backgroundColor: Colors.green,
+                    ),
+                    child: const Text(
+                      'Setujui',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
+    );
+  }
+
+  void _showDisposisiSheet(BuildContext context, WidgetRef ref, SuratModel surat) {
+    String? selectedTujuan;
+    final instruksiController = TextEditingController();
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setModalState) {
+            return Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+                left: 24,
+                right: 24,
+                top: 24,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Instruksi Disposisi',
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    const SizedBox(height: 24),
+                    DropdownButtonFormField<String>(
+                      decoration: const InputDecoration(
+                        labelText: 'Tujuan Disposisi',
+                        border: OutlineInputBorder(),
+                      ),
+                      value: selectedTujuan,
+                      items: ["Manajer IT", "Divisi Umum", "Keuangan", "SDM", "Legal"]
+                          .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                          .toList(),
+                      onChanged: (value) => setModalState(() => selectedTujuan = value),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: instruksiController,
+                      maxLines: 3,
+                      decoration: const InputDecoration(
+                        labelText: 'Catatan Instruksi',
+                        border: OutlineInputBorder(),
+                        alignLabelWithHint: true,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    FilledButton(
+                      onPressed: () {
+                        if (selectedTujuan != null) {
+                          ref.read(suratMasukProvider.notifier).disposisiSurat(
+                                surat.nomorSurat,
+                                selectedTujuan!,
+                                instruksiController.text,
+                              );
+                          context.pop();
+                        }
+                      },
+                      child: const Text('Kirim Disposisi'),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 
@@ -251,12 +343,12 @@ class DetailSuratScreen extends ConsumerWidget {
   }
 
   Color _getStatusColor(String status) {
-    switch (status) {
-      case 'belum_dibaca':
+    switch (status.toUpperCase()) {
+      case 'BELUM_DIBACA':
         return Colors.blue;
-      case 'disposisi':
+      case 'DISPOSISI':
         return Colors.orange;
-      case 'selesai':
+      case 'SELESAI':
         return Colors.green;
       default:
         return Colors.grey;

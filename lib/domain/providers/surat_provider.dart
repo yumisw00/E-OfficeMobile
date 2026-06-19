@@ -33,4 +33,21 @@ class SuratMasuk extends _$SuratMasuk {
     // Update the state
     state = AsyncValue.data(updatedList);
   }
+
+  Future<void> disposisiSurat(String nomorSurat, String tujuan, String instruksi) async {
+    // Get the current state
+    final currentList = state.value;
+    if (currentList == null) return;
+
+    // Update the list immutably
+    final updatedList = currentList.map((surat) {
+      if (surat.nomorSurat == nomorSurat) {
+        return surat.copyWith(status: 'DISPOSISI');
+      }
+      return surat;
+    }).toList();
+
+    // Update the state
+    state = AsyncValue.data(updatedList);
+  }
 }
