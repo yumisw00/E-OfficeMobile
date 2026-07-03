@@ -74,6 +74,15 @@ class MockSuratRepository implements SuratRepository {
         status: 'belum_dibaca',
         ringkasan: 'Dokumen rincian biaya seva server cloud dari langganan google cloud.',
       ),
+      SuratModel(
+        id: '8',
+        nomorSurat: '119/SKR/2024',
+        asalSurat: 'Politeknik Negeri Madiun',
+        perihal: 'Pembaruan Kontrak Sewa Server',
+        tanggalDiterima: DateTime.now().subtract(const Duration(days: 7)),
+        status: 'belum_dibaca',
+        ringkasan: 'Dokumen rincian biaya seva server cloud dari langganan google cloud.',
+      ),
     ];
   }
 }

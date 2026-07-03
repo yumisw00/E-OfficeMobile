@@ -75,7 +75,7 @@ final class SuratMasukProvider
   SuratMasuk create() => SuratMasuk();
 }
 
-String _$suratMasukHash() => r'58176300cb27fcbe5acb1d143e1889e4cc3572f3';
+String _$suratMasukHash() => r'a390a818de6721f1dfbf015d16c42349c77a3c96';
 
 abstract class _$SuratMasuk extends $AsyncNotifier<List<SuratModel>> {
   FutureOr<List<SuratModel>> build();

@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:e_office_mobile/core/routing/app_router.dart';
+import 'package:e_office_mobile/core/network/firebase_messaging_service.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Inisialisasi Firebase
+  await Firebase.initializeApp();
+  
+  // Inisialisasi Firebase Messaging Service
+  await FirebaseMessagingService().init();
+
   runApp(
     const ProviderScope(
       child: EOfficeApp(),
@@ -10,15 +20,11 @@ void main() {
   );
 }
 
-// 1. Ubah StatelessWidget menjadi ConsumerWidget
 class EOfficeApp extends ConsumerWidget {
   const EOfficeApp({super.key});
 
   @override
-  // 2. Tambahkan WidgetRef ref ke dalam metode build
   Widget build(BuildContext context, WidgetRef ref) {
-    // 3. Panggil router menggunakan ref.watch
-    // riverpod_generator otomatis menambahkan kata 'Provider' di akhir nama fungsi
     final router = ref.watch(appRouterProvider);
 
     return MaterialApp.router(
@@ -28,7 +34,6 @@ class EOfficeApp extends ConsumerWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
-      // 4. Masukkan variabel router yang sudah dipantau
       routerConfig: router,
     );
   }

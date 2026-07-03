@@ -1,53 +1,41 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class DioClient {
-  static final DioClient _instance = DioClient._internal();
-  late final Dio _dio;
+part 'dio_client.g.dart';
 
-  factory DioClient() => _instance;
+const _storage = FlutterSecureStorage();
 
-  DioClient._internal() {
-    _dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://api.e-office.example.com', // Dummy Base URL
-        connectTimeout: const Duration(seconds: 30),
-        receiveTimeout: const Duration(seconds: 30),
-        responseType: ResponseType.json,
-      ),
-    );
+@riverpod
+Dio dio(DioRef ref) {
+  final dio = Dio(
+    BaseOptions(
+      baseUrl: 'https://api.e-office.dummy/api',
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
+      headers: {
+        'Accept': 'application/json',
+      },
+    ),
+  );
 
-    _dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) {
-          // Log request in debug mode
-          if (kDebugMode) {
-            print('REQUEST[${options.method}] => PATH: ${options.path}');
-          }
+  dio.interceptors.add(
+    InterceptorsWrapper(
+      onRequest: (options, handler) async {
+        final token = await _storage.read(key: 'jwt_token');
+        if (token != null) {
+          options.headers['Authorization'] = 'Bearer $token';
+        }
+        return handler.next(options);
+      },
+      onError: (e, handler) {
+        if (e.response?.statusCode == 401) {
+          // TODO: Trigger logout karena token kedaluwarsa/tidak valid
+        }
+        return handler.next(e);
+      },
+    ),
+  );
 
-          // Placeholder for Bearer Token
-          // String? token = await storage.read(key: 'auth_token');
-          // if (token != null) {
-          //   options.headers['Authorization'] = 'Bearer $token';
-          // }
-
-          return handler.next(options);
-        },
-        onResponse: (response, handler) {
-          if (kDebugMode) {
-            print('RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}');
-          }
-          return handler.next(response);
-        },
-        onError: (DioException e, handler) {
-          if (kDebugMode) {
-            print('ERROR[${e.response?.statusCode}] => PATH: ${e.requestOptions.path}');
-          }
-          return handler.next(e);
-        },
-      ),
-    );
-  }
-
-  Dio get dio => _dio;
+  return dio;
 }
