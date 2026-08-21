@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # State Management
   flutter_riverpod: ^3.3.1
@@ -43,6 +45,7 @@ dependencies:
 
   # Local Storage
   flutter_secure_storage: ^10.3.1
+  path_provider: ^2.1.5
 
   # Firebase
   firebase_core: any
@@ -54,10 +57,14 @@ dependencies:
   intl: ^0.20.2
   syncfusion_flutter_pdfviewer: ^33.2.10
   qr_flutter: ^4.1.0
+  flex_color_scheme: ^8.4.0
+  shared_preferences: ^2.2.3
+  flutter_animate: ^4.5.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  figma_squircle: ^0.6.3
 
 dev_dependencies:
   flutter_test:

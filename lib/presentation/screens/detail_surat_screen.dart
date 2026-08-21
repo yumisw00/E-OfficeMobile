@@ -15,19 +15,18 @@ class DetailSuratScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // Watch the provider to get the latest version of this specific surat
     final suratMasukAsync = ref.watch(suratMasukProvider);
-    
+
     // Find the specific surat from the list to reflect live updates
     final currentSurat = suratMasukAsync.maybeWhen(
-      data: (list) => list.firstWhere((s) => s.id == surat.id, orElse: () => surat),
+      data: (list) =>
+          list.firstWhere((s) => s.id == surat.id, orElse: () => surat),
       orElse: () => surat,
     );
 
     final isApproved = currentSurat.status == 'selesai';
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(currentSurat.nomorSurat),
-      ),
+      appBar: AppBar(title: Text(currentSurat.nomorSurat)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -39,46 +38,56 @@ class DetailSuratScreen extends ConsumerWidget {
           ],
         ),
       ),
-      bottomNavigationBar: isApproved 
-        ? null // Hide button if already approved
-        : Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () => _showDisposisiSheet(context, ref, currentSurat),
-                    icon: const Icon(Icons.send),
-                    label: const Text('Disposisi'),
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
+      bottomNavigationBar: isApproved
+          ? null // Hide button if already approved
+          : Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () =>
+                          _showDisposisiSheet(context, ref, currentSurat),
+                      icon: const Icon(Icons.send),
+                      label: const Text('Disposisi'),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: FilledButton(
-                    onPressed: () {
-                      ref.read(suratMasukProvider.notifier).approveSurat(currentSurat.id);
-                      _showApprovalModal(context, currentSurat);
-                    },
-                    style: FilledButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      backgroundColor: Colors.green,
-                    ),
-                    child: const Text(
-                      'Setujui',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: FilledButton(
+                      onPressed: () {
+                        ref
+                            .read(suratMasukProvider.notifier)
+                            .approveSurat(currentSurat.id);
+                        _showApprovalModal(context, currentSurat);
+                      },
+                      style: FilledButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        backgroundColor: Colors.green,
+                      ),
+                      child: const Text(
+                        'Setujui',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
     );
   }
 
-  void _showDisposisiSheet(BuildContext context, WidgetRef ref, SuratModel surat) {
+  void _showDisposisiSheet(
+    BuildContext context,
+    WidgetRef ref,
+    SuratModel surat,
+  ) {
     String? selectedTujuan;
     final instruksiController = TextEditingController();
 
@@ -105,9 +114,8 @@ class DetailSuratScreen extends ConsumerWidget {
                   children: [
                     Text(
                       'Instruksi Disposisi',
-                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style: Theme.of(context).textTheme.headlineSmall
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 24),
                     DropdownButtonFormField<String>(
@@ -115,11 +123,22 @@ class DetailSuratScreen extends ConsumerWidget {
                         labelText: 'Tujuan Disposisi',
                         border: OutlineInputBorder(),
                       ),
-                      value: selectedTujuan,
-                      items: ["Manajer IT", "Divisi Umum", "Keuangan", "SDM", "Legal"]
-                          .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                          .toList(),
-                      onChanged: (value) => setModalState(() => selectedTujuan = value),
+                      initialValue: selectedTujuan,
+                      items:
+                          [
+                                "Manajer IT",
+                                "Divisi Umum",
+                                "Keuangan",
+                                "SDM",
+                                "Legal",
+                              ]
+                              .map(
+                                (e) =>
+                                    DropdownMenuItem(value: e, child: Text(e)),
+                              )
+                              .toList(),
+                      onChanged: (value) =>
+                          setModalState(() => selectedTujuan = value),
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
@@ -135,7 +154,9 @@ class DetailSuratScreen extends ConsumerWidget {
                     FilledButton(
                       onPressed: () {
                         if (selectedTujuan != null) {
-                          ref.read(suratMasukProvider.notifier).disposisiSurat(
+                          ref
+                              .read(suratMasukProvider.notifier)
+                              .disposisiSurat(
                                 surat.nomorSurat,
                                 selectedTujuan!,
                                 instruksiController.text,
@@ -178,14 +199,18 @@ class DetailSuratScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              const Icon(Icons.check_circle_outline, color: Colors.green, size: 64),
+              const Icon(
+                Icons.check_circle_outline,
+                color: Colors.green,
+                size: 64,
+              ),
               const SizedBox(height: 16),
               Text(
                 'Persetujuan Digital Berhasil',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                    ),
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green,
+                ),
               ),
               const SizedBox(height: 16),
               Text(
@@ -227,17 +252,32 @@ class DetailSuratScreen extends ConsumerWidget {
           children: [
             Text(
               'Informasi Surat',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             const Divider(),
             _buildInfoRow('Asal Surat', currentSurat.asalSurat, currentSurat),
-            _buildInfoRow('Tanggal Diterima', DateFormat('dd MMMM yyyy, HH:mm').format(currentSurat.tanggalDiterima), currentSurat),
+            _buildInfoRow(
+              'Tanggal Diterima',
+              DateFormat(
+                'dd MMMM yyyy, HH:mm',
+              ).format(currentSurat.tanggalDiterima),
+              currentSurat,
+            ),
             _buildInfoRow('Perihal', currentSurat.perihal, currentSurat),
-            _buildInfoRow('Status', currentSurat.status.replaceAll('_', ' ').toUpperCase(), currentSurat, isStatus: true),
+            _buildInfoRow(
+              'Status',
+              currentSurat.status.replaceAll('_', ' ').toUpperCase(),
+              currentSurat,
+              isStatus: true,
+            ),
             const SizedBox(height: 8),
             Text(
               'Ringkasan:',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
             Text(currentSurat.ringkasan),
@@ -246,7 +286,8 @@ class DetailSuratScreen extends ConsumerWidget {
               onPressed: () {
                 context.push(
                   '/pdf',
-                  extra: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+                  extra:
+                      'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
                 );
               },
               icon: const Icon(Icons.picture_as_pdf),
@@ -261,7 +302,12 @@ class DetailSuratScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildInfoRow(String label, String value, SuratModel currentSurat, {bool isStatus = false}) {
+  Widget _buildInfoRow(
+    String label,
+    String value,
+    SuratModel currentSurat, {
+    bool isStatus = false,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -271,7 +317,10 @@ class DetailSuratScreen extends ConsumerWidget {
             width: 120,
             child: Text(
               '$label:',
-              style: const TextStyle(fontWeight: FontWeight.w500, color: Colors.grey),
+              style: const TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Colors.grey,
+              ),
             ),
           ),
           Expanded(
@@ -299,12 +348,16 @@ class DetailSuratScreen extends ConsumerWidget {
           children: [
             Text(
               'Tracking Disposisi',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
             const Divider(),
             Stepper(
               physics: const NeverScrollableScrollPhysics(),
-              currentStep: currentSurat.status == 'selesai' ? 2 : 2, // Logic can be refined here
+              currentStep: currentSurat.status == 'selesai'
+                  ? 2
+                  : 2, // Logic can be refined here
               controlsBuilder: _nullControlsBuilder,
               steps: [
                 const Step(
@@ -323,12 +376,16 @@ class DetailSuratScreen extends ConsumerWidget {
                 ),
                 Step(
                   title: const Text('Menunggu Persetujuan'),
-                  subtitle: Text(currentSurat.status == 'selesai' 
-                      ? 'Surat telah disetujui secara digital' 
-                      : 'Sedang dalam tahap review akhir'),
+                  subtitle: Text(
+                    currentSurat.status == 'selesai'
+                        ? 'Surat telah disetujui secara digital'
+                        : 'Sedang dalam tahap review akhir',
+                  ),
                   content: const SizedBox.shrink(),
                   isActive: true,
-                  state: currentSurat.status == 'selesai' ? StepState.complete : StepState.indexed,
+                  state: currentSurat.status == 'selesai'
+                      ? StepState.complete
+                      : StepState.indexed,
                 ),
               ],
             ),
@@ -338,7 +395,10 @@ class DetailSuratScreen extends ConsumerWidget {
     );
   }
 
-  static Widget _nullControlsBuilder(BuildContext context, ControlsDetails details) {
+  static Widget _nullControlsBuilder(
+    BuildContext context,
+    ControlsDetails details,
+  ) {
     return const SizedBox.shrink();
   }
 

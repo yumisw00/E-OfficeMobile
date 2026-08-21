@@ -19,6 +19,6 @@ void main() {
     // Since we use MaterialApp.router, we might need to pump and settle
     await tester.pumpAndSettle();
 
-    expect(find.text('E-Office Dashboard'), findsOneWidget);
+    expect(find.text('Login E-Office Dahana'), findsOneWidget);
   });
 }

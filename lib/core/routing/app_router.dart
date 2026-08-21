@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../presentation/screens/dashboard_screen.dart';
+import '../../presentation/screens/main_layout_screen.dart';
 import '../../presentation/screens/detail_surat_screen.dart';
 import '../../presentation/screens/pdf_viewer_screen.dart';
 import '../../presentation/screens/login_screen.dart';
@@ -20,7 +19,7 @@ GoRouter appRouter(Ref ref) {
       ),
       GoRoute(
         path: '/dashboard',
-        builder: (context, state) => const DashboardScreen(),
+        builder: (context, state) => const MainLayoutScreen(),
       ),
       GoRoute(
         path: '/detail',
