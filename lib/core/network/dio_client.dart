@@ -10,12 +10,10 @@ const _storage = FlutterSecureStorage();
 Dio dio(Ref ref) {
   final dio = Dio(
     BaseOptions(
-      baseUrl: 'http://192.168.0.25:8000/api',
+      baseUrl: 'http://192.168.0.36:8000/api',
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
-      headers: {
-        'Accept': 'application/json',
-      },
+      headers: {'Accept': 'application/json'},
       validateStatus: (status) {
         return status != null && status < 500;
       },

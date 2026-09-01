@@ -54,11 +54,21 @@ class AuthNotifier extends _$AuthNotifier {
       }
     } on DioException catch (e) {
       if (kDebugMode) {
+        print('Login Error Type: ${e.type}');
+        print('Login Error Message: ${e.message}');
         print('Login Error Status: ${e.response?.statusCode}');
         print('Login Error Data: ${e.response?.data}');
       }
       final responseData = e.response?.data;
       String errorMessage = 'Login Gagal';
+
+      if (e.response == null) {
+        if (e.type == DioExceptionType.connectionTimeout || e.type == DioExceptionType.receiveTimeout) {
+          errorMessage = 'Koneksi ke server timeout. Pastikan server aktif dan IP benar.';
+        } else {
+          errorMessage = 'Tidak dapat terhubung ke server (Connection Refused). Periksa IP 192.168.0.25 dan pastikan Laravel berjalan dengan --host=0.0.0.0.';
+        }
+      }
 
       String formatErrorValue(dynamic val) {
         if (val is Map) {
