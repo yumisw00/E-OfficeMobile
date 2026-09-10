@@ -6,24 +6,24 @@ import '../../domain/providers/auth_provider.dart';
 import '../../domain/providers/theme_provider.dart';
 import '../../domain/providers/locale_provider.dart';
 import '../../core/localization/app_localizations.dart';
-
 class ProfilScreen extends ConsumerWidget {
   const ProfilScreen({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeProvider);
     final locale = ref.watch(localeProvider);
     final localizations = AppLocalizations.of(context);
     final theme = Theme.of(context);
-
+    final authState = ref.watch(authProvider);
+    final user = authState.value;
+    final userName = user?.nama ?? 'data User tidak dikirim';
+    final userJabatan = user?.jabatan ?? user?.unitKerja ?? 'data jabatan tidak dikirim';
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 100),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Profile Header Card
           Card(
             elevation: 0,
             shape: RoundedRectangleBorder(
@@ -53,30 +53,21 @@ class ProfilScreen extends ConsumerWidget {
                         right: 0,
                         child: Container(
                           padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.primary,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Icons.camera_alt_rounded,
-                            size: 16,
-                            color: Colors.white,
-                          ),
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 16),
-                  const Text(
-                    'Bpk. Budi Santoso',
-                    style: TextStyle(
+                  Text(
+                    '$userName',
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Direktur Utama',
+                    userJabatan,
                     style: TextStyle(
                       color: theme.colorScheme.onSurfaceVariant,
                       fontSize: 14,
@@ -91,8 +82,6 @@ class ProfilScreen extends ConsumerWidget {
               .fade(duration: 400.ms, curve: Curves.easeOutCubic)
               .scale(begin: const Offset(0.95, 0.95), end: const Offset(1, 1), duration: 400.ms, curve: Curves.easeOutCubic),
           const SizedBox(height: 24),
-
-          // Settings Section Title
           Text(
             localizations.get('account_settings'),
             style: TextStyle(
@@ -103,8 +92,6 @@ class ProfilScreen extends ConsumerWidget {
             ),
           ).animate().fade(delay: 100.ms),
           const SizedBox(height: 12),
-
-          // Settings Items
           Card(
             elevation: 0,
             shape: RoundedRectangleBorder(
@@ -115,7 +102,6 @@ class ProfilScreen extends ConsumerWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                // Theme Setting Option
                 ListTile(
                   leading: Icon(
                     themeMode == ThemeMode.light
@@ -137,7 +123,6 @@ class ProfilScreen extends ConsumerWidget {
                   onTap: () => _showThemePicker(context, ref, localizations),
                 ),
                 const Divider(height: 1, indent: 56),
-                // Language Setting Option
                 ListTile(
                   leading: Icon(Icons.language_rounded, color: theme.colorScheme.primary),
                   title: Text(localizations.get('language')),
@@ -152,10 +137,7 @@ class ProfilScreen extends ConsumerWidget {
               ],
             ),
           ).animate().fade(delay: 150.ms).slideY(begin: 0.1, end: 0, delay: 150.ms),
-
           const SizedBox(height: 32),
-
-          // Logout Button
           FilledButton.tonalIcon(
             onPressed: () => _showLogoutConfirm(context, ref, localizations),
             icon: const Icon(Icons.logout_rounded, color: Colors.red),
@@ -175,7 +157,6 @@ class ProfilScreen extends ConsumerWidget {
       ),
     );
   }
-
   void _showThemePicker(BuildContext context, WidgetRef ref, AppLocalizations localizations) {
     showModalBottomSheet(
       context: context,
@@ -192,13 +173,26 @@ class ProfilScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  localizations.get('select_theme'),
+                  localizations.get('pilih tema'),
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 16),
-                _buildThemeRadioOption(context, ref, ThemeMode.light, localizations.get('light'), currentMode),
-                _buildThemeRadioOption(context, ref, ThemeMode.dark, localizations.get('dark'), currentMode),
-                _buildThemeRadioOption(context, ref, ThemeMode.system, localizations.get('system'), currentMode),
+                RadioGroup<ThemeMode>(
+                  groupValue: currentMode,
+                  onChanged: (value) {
+                    if (value != null) {
+                      ref.read(themeProvider.notifier).setThemeMode(value);
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: Column(
+                    children: [
+                      _buildThemeRadioOption(context, ref, ThemeMode.light, localizations.get('cerah')),
+                      _buildThemeRadioOption(context, ref, ThemeMode.dark, localizations.get('gelap')),
+                      _buildThemeRadioOption(context, ref, ThemeMode.system, localizations.get('sistem')),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -206,22 +200,13 @@ class ProfilScreen extends ConsumerWidget {
       },
     );
   }
-
   Widget _buildThemeRadioOption(
-      BuildContext context, WidgetRef ref, ThemeMode mode, String label, ThemeMode currentMode) {
+      BuildContext context, WidgetRef ref, ThemeMode mode, String label) {
     return RadioListTile<ThemeMode>(
       value: mode,
-      groupValue: currentMode,
       title: Text(label),
-      onChanged: (value) {
-        if (value != null) {
-          ref.read(themeProvider.notifier).setThemeMode(value);
-          Navigator.pop(context);
-        }
-      },
     );
   }
-
   void _showLanguagePicker(BuildContext context, WidgetRef ref, AppLocalizations localizations) {
     showModalBottomSheet(
       context: context,
@@ -242,8 +227,21 @@ class ProfilScreen extends ConsumerWidget {
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 16),
-                _buildLanguageRadioOption(context, ref, const Locale('en'), localizations.get('english'), currentLocale),
-                _buildLanguageRadioOption(context, ref, const Locale('id'), localizations.get('indonesia'), currentLocale),
+                RadioGroup<Locale>(
+                  groupValue: currentLocale,
+                  onChanged: (value) {
+                    if (value != null) {
+                      ref.read(localeProvider.notifier).setLocale(value);
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: Column(
+                    children: [
+                      _buildLanguageRadioOption(context, ref, const Locale('en'), localizations.get('english')),
+                      _buildLanguageRadioOption(context, ref, const Locale('id'), localizations.get('indonesia')),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -251,36 +249,27 @@ class ProfilScreen extends ConsumerWidget {
       },
     );
   }
-
   Widget _buildLanguageRadioOption(
-      BuildContext context, WidgetRef ref, Locale locale, String label, Locale currentLocale) {
+      BuildContext context, WidgetRef ref, Locale locale, String label) {
     return RadioListTile<Locale>(
       value: locale,
-      groupValue: currentLocale,
       title: Text(label),
-      onChanged: (value) {
-        if (value != null) {
-          ref.read(localeProvider.notifier).setLocale(value);
-          Navigator.pop(context);
-        }
-      },
     );
   }
-
   void _showLogoutConfirm(BuildContext context, WidgetRef ref, AppLocalizations localizations) {
     showDialog(
       context: context,
       builder: (dialogContext) {
         return AlertDialog(
           title: Text(localizations.get('logout')),
-          content: Text(localizations.get('logout_confirm')),
+          content: Text(localizations.get('Anda yakin?')),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(dialogContext),
-              child: Text(localizations.get('cancel')),
+              child: Text(localizations.get('Tidak')),
             ),
             FilledButton(
               onPressed: () {
@@ -291,7 +280,7 @@ class ProfilScreen extends ConsumerWidget {
               style: FilledButton.styleFrom(
                 backgroundColor: Colors.red,
               ),
-              child: Text(localizations.get('logout')),
+              child: Text(localizations.get('Ya')),
             ),
           ],
         );
