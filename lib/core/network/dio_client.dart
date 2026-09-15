@@ -1,16 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../constants/app_config.dart';
 import 'api_endpoints.dart';
 
-part 'dio_client.g.dart';
-
 const _storage = FlutterSecureStorage();
 
-@Riverpod(keepAlive: true)
-Dio dio(Ref ref) {
+final dioProvider = Provider<Dio>((ref) {
   final dio = Dio(
     BaseOptions(
       baseUrl: AppConfig.baseUrl,
@@ -29,7 +26,6 @@ Dio dio(Ref ref) {
   dio.interceptors.add(
     InterceptorsWrapper(
       onRequest: (options, handler) async {
-        // Tambahkan Bearer Token ke setiap request
         final token = await _storage.read(key: AppConfig.authTokenKey);
         if (token != null) {
           options.headers['Authorization'] = 'Bearer $token';
@@ -82,4 +78,4 @@ Dio dio(Ref ref) {
   );
 
   return dio;
-}
+});

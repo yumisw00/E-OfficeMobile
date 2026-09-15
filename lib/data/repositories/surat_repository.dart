@@ -1,41 +1,25 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import '../models/surat_model.dart';
 import '../../core/constants/app_config.dart';
 import '../../core/network/api_endpoints.dart';
 
-/// Repository untuk operasi data Surat (Masuk & Keluar)
 abstract class SuratRepository {
-  /// Ambil daftar surat masuk untuk pimpinan (my-actions)
   Future<List<SuratModel>> getSuratMasuk({int page = 1, int pageSize = 20});
-  
-  /// Ambil daftar surat keluar
   Future<List<SuratModel>> getSuratKeluar({int page = 1, int limit = 20});
-  
-  /// Ambil detail surat masuk berdasarkan ID
   Future<SuratModel?> getSuratMasukDetail(String id);
-  
-  /// Ambil timeline/perjalanan surat masuk
   Future<List<TimelineEvent>> getSuratMasukTimeline(String id);
-  
-  /// Ambil ringkasan/statistik surat masuk
   Future<SuratSummary> getSuratMasukSummary();
-  
-  /// Buat disposisi surat
   Future<void> createDisposisi({
     required String idSuratMasuk,
     required String idPenerima,
     required String instruksi,
     DateTime? tanggalJatuhTempo,
   });
-  
-  /// Approve surat keluar
   Future<void> approveSuratKeluar(String id);
-  
-  /// Reject surat keluar dengan catatan revisi
   Future<void> rejectSuratKeluar(String id, String catatanRevisi);
-  
-  /// Tanda tangan digital surat keluar
   Future<String> signSuratKeluar(String id);
+  Future<List<SuratModel>> getApprovalQueue({int page = 1, int pageSize = 20});
 }
 
 class ApiSuratRepository implements SuratRepository {
@@ -51,7 +35,6 @@ class ApiSuratRepository implements SuratRepository {
         queryParameters: {
           'page': page,
           'pagesize': pageSize,
-          // Filter untuk surat yang perlu aksi pimpinan
           'filter[status]': 'baru',
         },
       );
@@ -217,7 +200,7 @@ class ApiSuratRepository implements SuratRepository {
     try {
       final payload = {
         'id_surat_masuk': idSuratMasuk,
-        'id_pemberi': idPenerima, // Backend expects id_pemberi
+        'id_pemberi': idPenerima, 
         'id_penerima': idPenerima,
         'instruksi': instruksi,
         'status': 'baru',
@@ -312,6 +295,40 @@ class ApiSuratRepository implements SuratRepository {
     } on DioException catch (e) {
       if (AppConfig.enableLogging) {
         debugPrint('❌ Error signing surat: ${e.message}');
+      }
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<SuratModel>> getApprovalQueue({int page = 1, int pageSize = 20}) async {
+    try {
+      final response = await _dio.get(
+        ApiEndpoints.approvalQueue,
+        queryParameters: {
+          'page': page,
+          'limit': pageSize,
+        },
+      );
+      
+      if (response.statusCode == 200) {
+        final data = response.data;
+        if (data != null && data['data'] != null) {
+          return (data['data'] as List)
+              .map((json) => SuratModel.fromJsonApi(json))
+              .toList();
+        }
+        return [];
+      }
+      
+      throw DioException(
+        requestOptions: response.requestOptions,
+        response: response,
+        type: DioExceptionType.badResponse,
+      );
+    } on DioException catch (e) {
+      if (AppConfig.enableLogging) {
+        debugPrint('❌ Error getting approval queue: ${e.message}');
       }
       rethrow;
     }

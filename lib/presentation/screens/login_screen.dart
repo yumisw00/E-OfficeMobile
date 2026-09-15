@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../core/network/firebase_messaging_service.dart';
 import '../../domain/providers/auth_provider.dart';
 import '../widgets/empty_state_view.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});

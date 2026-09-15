@@ -1,19 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../core/network/dio_client.dart';
 import '../../core/network/api_endpoints.dart';
+import '../../core/constants/app_config.dart';
 import '../../data/models/user_model.dart';
 
-part 'auth_provider.g.dart';
+final authProvider = StateNotifierProvider<AuthNotifier, AsyncValue<UserModel?>>((ref) {
+  return AuthNotifier();
+});
 
-@riverpod
-class AuthNotifier extends _$AuthNotifier {
-  @override
-  AsyncValue<UserModel?> build() {
-    return const AsyncValue.data(null);
-  }
+class AuthNotifier extends StateNotifier<AsyncValue<UserModel?>> {
+  AuthNotifier() : super(const AsyncValue.data(null));
 
   /// Login dengan email, password, device name, dan FCM token
   Future<void> login(
@@ -24,8 +23,18 @@ class AuthNotifier extends _$AuthNotifier {
   ) async {
     state = const AsyncValue.loading();
     try {
-      final dio = ref.read(dioProvider);
-      
+      final dio = Dio(
+        BaseOptions(
+          baseUrl: AppConfig.baseUrl,
+          connectTimeout: AppConfig.connectTimeout,
+          receiveTimeout: AppConfig.receiveTimeout,
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
+
       if (kDebugMode) {
         print('🔐 Attempting login for: $email');
         print('   Device: $deviceName');
@@ -136,13 +145,13 @@ class AuthNotifier extends _$AuthNotifier {
         errorMessage = responseData.toString();
       }
 
-      state = AsyncError(Exception(errorMessage), StackTrace.current);
+      state = AsyncValue.error(Exception(errorMessage), StackTrace.current);
       throw Exception(errorMessage);
     } catch (e, st) {
       if (kDebugMode) {
         print('❌ Login Unexpected Error: $e');
       }
-      state = AsyncError(e, st);
+      state = AsyncValue.error(e, st);
       rethrow;
     }
   }
@@ -151,7 +160,17 @@ class AuthNotifier extends _$AuthNotifier {
   Future<void> logout() async {
     state = const AsyncValue.loading();
     try {
-      final dio = ref.read(dioProvider);
+      final dio = Dio(
+        BaseOptions(
+          baseUrl: AppConfig.baseUrl,
+          connectTimeout: AppConfig.connectTimeout,
+          receiveTimeout: AppConfig.receiveTimeout,
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
       // Panggil API logout terlebih dahulu
       await dio.post(ApiEndpoints.logout);
     } catch (e) {

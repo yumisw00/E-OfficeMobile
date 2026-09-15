@@ -7,10 +7,11 @@ class SuratModel {
   final DateTime tanggalDiterima;
   final String status; 
   final String ringkasan;
-  final String? filePdf;        // Path/URL file PDF surat
-  final int disposisiCount;     // Jumlah disposisi
-  final String? pengirim;       // Nama pengirim
-  final DateTime? tanggalSurat; // Tanggal pada surat
+  final String? filePdf;
+  final int disposisiCount;
+  final String? pengirim;
+  final DateTime? tanggalSurat;
+  final String? pemohon;
   
   SuratModel({
     required this.id,
@@ -24,9 +25,9 @@ class SuratModel {
     this.disposisiCount = 0,
     this.pengirim,
     this.tanggalSurat,
+    this.pemohon,
   });
 
-  /// Factory constructor untuk parsing JSON dari API Backend Laravel
   factory SuratModel.fromJsonApi(Map<String, dynamic> json) {
     return SuratModel(
       id: (json['id'] ?? json['id_surat_masuk'] ?? json['uuid'] ?? '').toString(),
@@ -40,6 +41,7 @@ class SuratModel {
       disposisiCount: json['disposisi_count'] ?? 0,
       pengirim: json['pengirim'] ?? json['nama_pengirim'],
       tanggalSurat: _parseDateOrNull(json['tanggal_surat']),
+      pemohon: json['pemohon'] ?? json['nama_pemohon'] ?? json['diajukan_oleh'],
     );
   }
 
@@ -80,7 +82,6 @@ class SuratModel {
     return 'belum_dibaca';
   }
 
-  // Legacy constructor - tetap ada untuk backward compatibility
   factory SuratModel.fromJson(Map<String, dynamic> json) {
     return SuratModel(
       id: json['id'] as String,
@@ -136,15 +137,14 @@ class SuratModel {
   }
 }
 
-/// Model untuk Timeline Event (Perjalanan Surat)
 class TimelineEvent {
   final String id;
-  final String judul;           // Judul event (misal: "Surat Diterima")
-  final String deskripsi;       // Deskripsi detail event
-  final DateTime tanggal;       // Waktu kejadian
-  final String pelaku;          // Siapa yang melakukan aksi
-  final String? catatan;        // Catatan tambahan
-  final String status;          // Status pada saat itu
+  final String judul;
+  final String deskripsi;
+  final DateTime tanggal;
+  final String pelaku;
+  final String? catatan;
+  final String status;
 
   TimelineEvent({
     required this.id,
@@ -169,7 +169,6 @@ class TimelineEvent {
   }
 }
 
-/// Model untuk Ringkasan/Summary Statistik Surat
 class SuratSummary {
   final int total;
   final int baru;
