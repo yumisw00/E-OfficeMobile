@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../domain/providers/theme_provider.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
   final String title;
-  final bool showLogout;
-  final VoidCallback? onLogoutPressed;
 
   const CustomAppBar({
     super.key,
     required this.title,
-    this.showLogout = false,
-    this.onLogoutPressed,
   });
 
   @override
@@ -31,12 +27,10 @@ class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
       elevation: 0,
       backgroundColor: Theme.of(context).colorScheme.surface,
       actions: [
-        if (showLogout && onLogoutPressed != null)
-          IconButton(
-            icon: const Icon(Icons.logout_rounded),
-            color: Theme.of(context).colorScheme.error,
-            onPressed: onLogoutPressed,
-          ),
+        IconButton(
+          icon: const Icon(Icons.notifications_none_rounded),
+          onPressed: () => context.push('/notifications'),
+        ),
         const SizedBox(width: 8),
       ],
     );
