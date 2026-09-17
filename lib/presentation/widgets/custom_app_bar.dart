@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
+  final String title;
+
+  const CustomAppBar({
+    super.key,
+    required this.title,
+  });
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return AppBar(
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+      ),
+      centerTitle: true,
+      elevation: 0,
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.notifications_none_rounded),
+          onPressed: () => context.push('/notifications'),
+        ),
+        const SizedBox(width: 8),
+      ],
+    );
+  }
+}
