@@ -28,7 +28,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
       - "/bin/"
     searched_directories:
       - "/home/marco/.local/bin/uname"
@@ -38,7 +37,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -46,7 +44,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "message-v1"
     backtrace:
@@ -83,7 +80,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     searched_directories:
       - "/home/marco/.local/bin/ninja-build"
       - "/home/marco/.local/bin/ninja"
@@ -99,7 +95,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -107,7 +102,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -136,11 +130,9 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     found: "/usr/bin/clang++"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -149,7 +141,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -178,7 +169,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -186,7 +176,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "message-v1"
     backtrace:
@@ -238,11 +227,9 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     found: "/usr/bin/llvm-ar"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -251,7 +238,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -281,11 +267,9 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     found: "/usr/bin/llvm-ranlib"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -294,7 +278,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -324,11 +307,9 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     found: "/usr/bin/llvm-strip"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -337,7 +318,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -367,7 +347,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     searched_directories:
       - "/usr/bin/ld.lld"
       - "/home/marco/.local/bin/ld.lld"
@@ -377,11 +356,9 @@ events:
       - "/usr/bin/site_perl/ld.lld"
       - "/usr/bin/vendor_perl/ld.lld"
       - "/usr/bin/core_perl/ld.lld"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/ld.lld"
     found: "/usr/bin/ld"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -390,7 +367,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -420,11 +396,9 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     found: "/usr/bin/llvm-nm"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -433,7 +407,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -463,11 +436,9 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     found: "/usr/bin/llvm-objdump"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -476,7 +447,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -506,11 +476,9 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     found: "/usr/bin/llvm-objcopy"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -519,7 +487,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -549,11 +516,9 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     found: "/usr/bin/llvm-readelf"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -562,7 +527,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -592,11 +556,9 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     found: "/usr/bin/llvm-dlltool"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -605,7 +567,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -635,11 +596,9 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     found: "/usr/bin/llvm-addr2line"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -648,7 +607,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -677,7 +635,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     searched_directories:
       - "/usr/bin/tapi"
       - "/home/marco/.local/bin/tapi"
@@ -687,11 +644,9 @@ events:
       - "/usr/bin/site_perl/tapi"
       - "/usr/bin/vendor_perl/tapi"
       - "/usr/bin/core_perl/tapi"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/tapi"
     found: false
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -700,7 +655,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -732,7 +686,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     searched_directories:
       - "/usr/bin/llvm-ar-22.1"
       - "/home/marco/.local/bin/llvm-ar-22.1"
@@ -742,7 +695,6 @@ events:
       - "/usr/bin/site_perl/llvm-ar-22.1"
       - "/usr/bin/vendor_perl/llvm-ar-22.1"
       - "/usr/bin/core_perl/llvm-ar-22.1"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ar-22.1"
       - "/usr/bin/llvm-ar-22"
       - "/home/marco/.local/bin/llvm-ar-22"
       - "/usr/local/sbin/llvm-ar-22"
@@ -751,7 +703,6 @@ events:
       - "/usr/bin/site_perl/llvm-ar-22"
       - "/usr/bin/vendor_perl/llvm-ar-22"
       - "/usr/bin/core_perl/llvm-ar-22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ar-22"
       - "/usr/bin/llvm-ar22"
       - "/home/marco/.local/bin/llvm-ar22"
       - "/usr/local/sbin/llvm-ar22"
@@ -760,11 +711,9 @@ events:
       - "/usr/bin/site_perl/llvm-ar22"
       - "/usr/bin/vendor_perl/llvm-ar22"
       - "/usr/bin/core_perl/llvm-ar22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ar22"
     found: "/usr/bin/llvm-ar"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -773,7 +722,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -805,7 +753,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     searched_directories:
       - "/usr/bin/llvm-ranlib-22.1"
       - "/home/marco/.local/bin/llvm-ranlib-22.1"
@@ -815,7 +762,6 @@ events:
       - "/usr/bin/site_perl/llvm-ranlib-22.1"
       - "/usr/bin/vendor_perl/llvm-ranlib-22.1"
       - "/usr/bin/core_perl/llvm-ranlib-22.1"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ranlib-22.1"
       - "/usr/bin/llvm-ranlib-22"
       - "/home/marco/.local/bin/llvm-ranlib-22"
       - "/usr/local/sbin/llvm-ranlib-22"
@@ -824,7 +770,6 @@ events:
       - "/usr/bin/site_perl/llvm-ranlib-22"
       - "/usr/bin/vendor_perl/llvm-ranlib-22"
       - "/usr/bin/core_perl/llvm-ranlib-22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ranlib-22"
       - "/usr/bin/llvm-ranlib22"
       - "/home/marco/.local/bin/llvm-ranlib22"
       - "/usr/local/sbin/llvm-ranlib22"
@@ -833,11 +778,9 @@ events:
       - "/usr/bin/site_perl/llvm-ranlib22"
       - "/usr/bin/vendor_perl/llvm-ranlib22"
       - "/usr/bin/core_perl/llvm-ranlib22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ranlib22"
     found: "/usr/bin/llvm-ranlib"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -846,7 +789,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "find-v1"
     backtrace:
@@ -882,7 +824,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
     searched_directories:
       - "/usr/bin/clang-scan-deps-22.1"
       - "/home/marco/.local/bin/clang-scan-deps-22.1"
@@ -892,7 +833,6 @@ events:
       - "/usr/bin/site_perl/clang-scan-deps-22.1"
       - "/usr/bin/vendor_perl/clang-scan-deps-22.1"
       - "/usr/bin/core_perl/clang-scan-deps-22.1"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/clang-scan-deps-22.1"
       - "/usr/bin/clang-scan-deps-22"
       - "/home/marco/.local/bin/clang-scan-deps-22"
       - "/usr/local/sbin/clang-scan-deps-22"
@@ -901,7 +841,6 @@ events:
       - "/usr/bin/site_perl/clang-scan-deps-22"
       - "/usr/bin/vendor_perl/clang-scan-deps-22"
       - "/usr/bin/core_perl/clang-scan-deps-22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/clang-scan-deps-22"
       - "/usr/bin/clang-scan-deps22"
       - "/home/marco/.local/bin/clang-scan-deps22"
       - "/usr/local/sbin/clang-scan-deps22"
@@ -910,11 +849,9 @@ events:
       - "/usr/bin/site_perl/clang-scan-deps22"
       - "/usr/bin/vendor_perl/clang-scan-deps22"
       - "/usr/bin/core_perl/clang-scan-deps22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/clang-scan-deps22"
     found: "/usr/bin/clang-scan-deps"
     search_context:
       ENV{PATH}:
-        - "/home/marco/.local/bin"
         - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
@@ -923,7 +860,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
   -
     kind: "try_compile-v1"
     backtrace:
@@ -933,8 +869,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-10CVoH"
-      binary: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-10CVoH"
+      source: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-XWWHr6"
+      binary: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-XWWHr6"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/usr/bin/clang-scan-deps"
       CMAKE_CXX_FLAGS: ""
@@ -946,10 +882,10 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: '/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-10CVoH'
+        Change Dir: '/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-XWWHr6'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_33d11
-        [1/2] /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /usr/bin/ninja -v cmTC_ceb3b
+        [1/2] /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         clang version 22.1.8
         Target: x86_64-pc-linux-gnu
         Thread model: posix
@@ -961,7 +897,7 @@ events:
         Candidate multilib: 32;@m32
         Selected multilib: .;@m64
          (in-process)
-         "/usr/bin/clang++" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-10CVoH -v -fcoverage-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-10CVoH -resource-dir /usr/lib/clang/22 -dependency-file CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16 -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/backward -internal-isystem /usr/lib/clang/22/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -fdwarf2-cfi-asm -o CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+         "/usr/bin/clang++" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-XWWHr6 -v -fcoverage-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-XWWHr6 -resource-dir /usr/lib/clang/22 -dependency-file CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16 -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/backward -internal-isystem /usr/lib/clang/22/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -fdwarf2-cfi-asm -o CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         clang -cc1 version 22.1.8 based upon LLVM 22.1.8 default target x86_64-pc-linux-gnu
         ignoring nonexistent directory "/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include"
         ignoring nonexistent directory "/include"
@@ -974,7 +910,7 @@ events:
          /usr/local/include
          /usr/include
         End of search list.
-        [2/2] : && /usr/bin/clang++  -v -Wl,-v CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_33d11   && :
+        [2/2] : && /usr/bin/clang++  -v -Wl,-v CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ceb3b   && :
         clang version 22.1.8
         Target: x86_64-pc-linux-gnu
         Thread model: posix
@@ -985,7 +921,7 @@ events:
         Candidate multilib: .;@m64
         Candidate multilib: 32;@m32
         Selected multilib: .;@m64
-         "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_33d11 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o
+         "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_ceb3b /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o
         GNU ld (GNU Binutils) 2.47
         
       exitCode: 0
@@ -1025,10 +961,10 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|wild|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|wild))("|,| |$)]
-        ignore line: [Change Dir: '/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-10CVoH']
+        ignore line: [Change Dir: '/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-XWWHr6']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_33d11]
-        ignore line: [[1/2] /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_ceb3b]
+        ignore line: [[1/2] /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang version 22.1.8]
         ignore line: [Target: x86_64-pc-linux-gnu]
         ignore line: [Thread model: posix]
@@ -1043,7 +979,7 @@ events:
         ignore line: [Selected multilib: .]
         ignore line: [@m64]
         ignore line: [ (in-process)]
-        ignore line: [ "/usr/bin/clang++" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-10CVoH -v -fcoverage-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-10CVoH -resource-dir /usr/lib/clang/22 -dependency-file CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16 -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/backward -internal-isystem /usr/lib/clang/22/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -fdwarf2-cfi-asm -o CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [ "/usr/bin/clang++" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-XWWHr6 -v -fcoverage-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-XWWHr6 -resource-dir /usr/lib/clang/22 -dependency-file CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16 -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/backward -internal-isystem /usr/lib/clang/22/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -fdwarf2-cfi-asm -o CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang -cc1 version 22.1.8 based upon LLVM 22.1.8 default target x86_64-pc-linux-gnu]
         ignore line: [ignoring nonexistent directory "/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include"]
         ignore line: [ignoring nonexistent directory "/include"]
@@ -1056,7 +992,7 @@ events:
         ignore line: [ /usr/local/include]
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
-        ignore line: [[2/2] : && /usr/bin/clang++  -v -Wl -v CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_33d11   && :]
+        ignore line: [[2/2] : && /usr/bin/clang++  -v -Wl -v CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ceb3b   && :]
         ignore line: [clang version 22.1.8]
         ignore line: [Target: x86_64-pc-linux-gnu]
         ignore line: [Thread model: posix]
@@ -1070,9 +1006,9 @@ events:
         ignore line: [@m32]
         ignore line: [Selected multilib: .]
         ignore line: [@m64]
-        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_33d11 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o] ==> linker [/usr/bin/ld]
-        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_33d11 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o] ==> linker architecture flags [-m;elf]
-        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_33d11 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o]
+        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_ceb3b /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o] ==> linker [/usr/bin/ld]
+        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_ceb3b /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o] ==> linker architecture flags [-m;elf]
+        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_ceb3b /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o]
           arg [/usr/bin/ld] ==> ignore
           arg [--hash-style=gnu] ==> ignore
           arg [--build-id] ==> ignore
@@ -1083,7 +1019,7 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_33d11] ==> ignore
+          arg [cmTC_ceb3b] ==> ignore
           arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o]
           arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o]
           arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o]
@@ -1094,7 +1030,7 @@ events:
           arg [-L/lib] ==> dir [/lib]
           arg [-L/usr/lib] ==> dir [/usr/lib]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_33d11.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_ceb3b.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -1160,7 +1096,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
       - "/usr/local/bin/"
       - "/usr/local/sbin/"
       - "/usr/local/"
@@ -1189,7 +1124,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1197,7 +1131,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1235,7 +1168,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1243,7 +1175,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1283,7 +1214,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1291,7 +1221,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1331,7 +1260,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1339,7 +1267,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1379,7 +1306,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1387,7 +1313,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1427,7 +1352,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1435,7 +1359,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1475,7 +1398,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1483,7 +1405,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1523,7 +1444,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1531,7 +1451,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1571,7 +1490,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1579,7 +1497,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1619,7 +1536,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1627,7 +1543,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1667,7 +1582,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1675,7 +1589,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1715,7 +1628,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1723,7 +1635,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1763,7 +1674,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1771,7 +1681,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1811,7 +1720,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1819,7 +1727,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1859,7 +1766,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1867,7 +1773,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1907,7 +1812,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1915,7 +1819,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -1955,7 +1858,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -1963,7 +1865,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2003,7 +1904,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -2011,7 +1911,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2051,7 +1950,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -2059,7 +1957,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2099,7 +1996,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -2107,7 +2003,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2147,7 +2042,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -2155,7 +2049,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2195,7 +2088,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -2203,7 +2095,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2241,7 +2132,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -2249,7 +2139,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2288,7 +2177,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -2296,7 +2184,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2362,7 +2249,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
       - "/usr/local/bin/"
       - "/usr/local/sbin/"
       - "/usr/local/"
@@ -2389,7 +2275,6 @@ events:
       - "/usr/bin/site_perl/llvm-ar-22.1"
       - "/usr/bin/vendor_perl/llvm-ar-22.1"
       - "/usr/bin/core_perl/llvm-ar-22.1"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ar-22.1"
       - "/usr/local/bin/llvm-ar-22.1"
       - "/usr/local/sbin/llvm-ar-22.1"
       - "/usr/local/llvm-ar-22.1"
@@ -2415,7 +2300,6 @@ events:
       - "/usr/bin/site_perl/llvm-ar-22"
       - "/usr/bin/vendor_perl/llvm-ar-22"
       - "/usr/bin/core_perl/llvm-ar-22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ar-22"
       - "/usr/local/bin/llvm-ar-22"
       - "/usr/local/sbin/llvm-ar-22"
       - "/usr/local/llvm-ar-22"
@@ -2441,7 +2325,6 @@ events:
       - "/usr/bin/site_perl/llvm-ar22"
       - "/usr/bin/vendor_perl/llvm-ar22"
       - "/usr/bin/core_perl/llvm-ar22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ar22"
       - "/usr/local/bin/llvm-ar22"
       - "/usr/local/sbin/llvm-ar22"
       - "/usr/local/llvm-ar22"
@@ -2463,7 +2346,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -2471,7 +2353,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2513,7 +2394,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
       - "/usr/local/bin/"
       - "/usr/local/sbin/"
       - "/usr/local/"
@@ -2540,7 +2420,6 @@ events:
       - "/usr/bin/site_perl/llvm-ranlib-22.1"
       - "/usr/bin/vendor_perl/llvm-ranlib-22.1"
       - "/usr/bin/core_perl/llvm-ranlib-22.1"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ranlib-22.1"
       - "/usr/local/bin/llvm-ranlib-22.1"
       - "/usr/local/sbin/llvm-ranlib-22.1"
       - "/usr/local/llvm-ranlib-22.1"
@@ -2566,7 +2445,6 @@ events:
       - "/usr/bin/site_perl/llvm-ranlib-22"
       - "/usr/bin/vendor_perl/llvm-ranlib-22"
       - "/usr/bin/core_perl/llvm-ranlib-22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ranlib-22"
       - "/usr/local/bin/llvm-ranlib-22"
       - "/usr/local/sbin/llvm-ranlib-22"
       - "/usr/local/llvm-ranlib-22"
@@ -2592,7 +2470,6 @@ events:
       - "/usr/bin/site_perl/llvm-ranlib22"
       - "/usr/bin/vendor_perl/llvm-ranlib22"
       - "/usr/bin/core_perl/llvm-ranlib22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/llvm-ranlib22"
       - "/usr/local/bin/llvm-ranlib22"
       - "/usr/local/sbin/llvm-ranlib22"
       - "/usr/local/llvm-ranlib22"
@@ -2614,7 +2491,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -2622,7 +2498,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2668,7 +2543,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
       - "/usr/local/bin/"
       - "/usr/local/sbin/"
       - "/usr/local/"
@@ -2695,7 +2569,6 @@ events:
       - "/usr/bin/site_perl/clang-scan-deps-22.1"
       - "/usr/bin/vendor_perl/clang-scan-deps-22.1"
       - "/usr/bin/core_perl/clang-scan-deps-22.1"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/clang-scan-deps-22.1"
       - "/usr/local/bin/clang-scan-deps-22.1"
       - "/usr/local/sbin/clang-scan-deps-22.1"
       - "/usr/local/clang-scan-deps-22.1"
@@ -2721,7 +2594,6 @@ events:
       - "/usr/bin/site_perl/clang-scan-deps-22"
       - "/usr/bin/vendor_perl/clang-scan-deps-22"
       - "/usr/bin/core_perl/clang-scan-deps-22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/clang-scan-deps-22"
       - "/usr/local/bin/clang-scan-deps-22"
       - "/usr/local/sbin/clang-scan-deps-22"
       - "/usr/local/clang-scan-deps-22"
@@ -2747,7 +2619,6 @@ events:
       - "/usr/bin/site_perl/clang-scan-deps22"
       - "/usr/bin/vendor_perl/clang-scan-deps22"
       - "/usr/bin/core_perl/clang-scan-deps22"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/clang-scan-deps22"
       - "/usr/local/bin/clang-scan-deps22"
       - "/usr/local/sbin/clang-scan-deps22"
       - "/usr/local/clang-scan-deps22"
@@ -2769,7 +2640,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -2777,7 +2647,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -2797,8 +2666,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-0JO0Sp"
-      binary: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-0JO0Sp"
+      source: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-A6HtLM"
+      binary: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-A6HtLM"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/usr/bin/clang-scan-deps"
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
@@ -2809,10 +2678,10 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: '/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-0JO0Sp'
+        Change Dir: '/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-A6HtLM'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_d42d8
-        [1/2] /usr/bin/clang   -v -MD -MT CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/ninja -v cmTC_5cc6a
+        [1/2] /usr/bin/clang   -v -MD -MT CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
         clang version 22.1.8
         Target: x86_64-pc-linux-gnu
         Thread model: posix
@@ -2824,7 +2693,7 @@ events:
         Candidate multilib: 32;@m32
         Selected multilib: .;@m64
          (in-process)
-         "/usr/bin/clang-22" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-0JO0Sp -v -fcoverage-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-0JO0Sp -resource-dir /usr/lib/clang/22 -dependency-file CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib/clang/22/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -fdwarf2-cfi-asm -o CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+         "/usr/bin/clang-22" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-A6HtLM -v -fcoverage-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-A6HtLM -resource-dir /usr/lib/clang/22 -dependency-file CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib/clang/22/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -fdwarf2-cfi-asm -o CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake/Modules/CMakeCCompilerABI.c
         clang -cc1 version 22.1.8 based upon LLVM 22.1.8 default target x86_64-pc-linux-gnu
         ignoring nonexistent directory "/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include"
         ignoring nonexistent directory "/include"
@@ -2834,7 +2703,7 @@ events:
          /usr/local/include
          /usr/include
         End of search list.
-        [2/2] : && /usr/bin/clang  -v -Wl,-v CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -o cmTC_d42d8   && :
+        [2/2] : && /usr/bin/clang  -v -Wl,-v CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -o cmTC_5cc6a   && :
         clang version 22.1.8
         Target: x86_64-pc-linux-gnu
         Thread model: posix
@@ -2845,7 +2714,7 @@ events:
         Candidate multilib: .;@m64
         Candidate multilib: 32;@m32
         Selected multilib: .;@m64
-         "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d42d8 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o
+         "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_5cc6a /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o
         GNU ld (GNU Binutils) 2.47
         
       exitCode: 0
@@ -2879,10 +2748,10 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|wild|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|wild))("|,| |$)]
-        ignore line: [Change Dir: '/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-0JO0Sp']
+        ignore line: [Change Dir: '/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-A6HtLM']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_d42d8]
-        ignore line: [[1/2] /usr/bin/clang   -v -MD -MT CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/ninja -v cmTC_5cc6a]
+        ignore line: [[1/2] /usr/bin/clang   -v -MD -MT CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [clang version 22.1.8]
         ignore line: [Target: x86_64-pc-linux-gnu]
         ignore line: [Thread model: posix]
@@ -2897,7 +2766,7 @@ events:
         ignore line: [Selected multilib: .]
         ignore line: [@m64]
         ignore line: [ (in-process)]
-        ignore line: [ "/usr/bin/clang-22" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-0JO0Sp -v -fcoverage-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-0JO0Sp -resource-dir /usr/lib/clang/22 -dependency-file CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib/clang/22/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -fdwarf2-cfi-asm -o CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [ "/usr/bin/clang-22" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-A6HtLM -v -fcoverage-compilation-dir=/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-A6HtLM -resource-dir /usr/lib/clang/22 -dependency-file CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib/clang/22/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -stack-protector 2 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -fdwarf2-cfi-asm -o CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [clang -cc1 version 22.1.8 based upon LLVM 22.1.8 default target x86_64-pc-linux-gnu]
         ignore line: [ignoring nonexistent directory "/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/include"]
         ignore line: [ignoring nonexistent directory "/include"]
@@ -2907,7 +2776,7 @@ events:
         ignore line: [ /usr/local/include]
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
-        ignore line: [[2/2] : && /usr/bin/clang  -v -Wl -v CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -o cmTC_d42d8   && :]
+        ignore line: [[2/2] : && /usr/bin/clang  -v -Wl -v CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -o cmTC_5cc6a   && :]
         ignore line: [clang version 22.1.8]
         ignore line: [Target: x86_64-pc-linux-gnu]
         ignore line: [Thread model: posix]
@@ -2921,9 +2790,9 @@ events:
         ignore line: [@m32]
         ignore line: [Selected multilib: .]
         ignore line: [@m64]
-        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d42d8 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o] ==> linker [/usr/bin/ld]
-        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d42d8 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o] ==> linker architecture flags [-m;elf]
-        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d42d8 /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o]
+        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_5cc6a /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o] ==> linker [/usr/bin/ld]
+        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_5cc6a /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o] ==> linker architecture flags [-m;elf]
+        link line: [ "/usr/bin/ld" --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_5cc6a /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16 -L/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64 -L/lib/../lib64 -L/usr/lib64 -L/lib -L/usr/lib -v CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtendS.o /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crtn.o]
           arg [/usr/bin/ld] ==> ignore
           arg [--hash-style=gnu] ==> ignore
           arg [--build-id] ==> ignore
@@ -2934,7 +2803,7 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_d42d8] ==> ignore
+          arg [cmTC_5cc6a] ==> ignore
           arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/Scrt1.o]
           arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../lib64/crti.o]
           arg [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o] ==> obj [/usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o]
@@ -2945,7 +2814,7 @@ events:
           arg [-L/lib] ==> dir [/lib]
           arg [-L/usr/lib] ==> dir [/usr/lib]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_d42d8.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_5cc6a.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--as-needed] ==> ignore
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -3012,7 +2881,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
       - "/usr/local/lib/"
       - "/usr/local/"
       - "/usr/lib/"
@@ -3082,7 +2950,6 @@ events:
       - "/usr/bin/site_perl/"
       - "/usr/bin/vendor_perl/"
       - "/usr/bin/core_perl/"
-      - "/opt/android-studio/plugins/android/resources/android-cli/bin/"
       - "/usr/local/lib/"
       - "/usr/local/"
       - "/usr/lib/"
@@ -3109,7 +2976,6 @@ events:
     search_context:
       ENV{PATH}:
         - "/home/marco/.local/bin"
-        - "/home/marco/.local/bin"
         - "/usr/local/sbin"
         - "/usr/local/bin"
         - "/usr/bin"
@@ -3117,7 +2983,6 @@ events:
         - "/usr/bin/site_perl"
         - "/usr/bin/vendor_perl"
         - "/usr/bin/core_perl"
-        - "/opt/android-studio/plugins/android/resources/android-cli/bin"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/usr/local"
@@ -3138,8 +3003,8 @@ events:
       - "/usr/share/cmake/Modules/FindJNI.cmake:602 (check_source_compiles)"
       - "flutter/ephemeral/.plugin_symlinks/jni/src/CMakeLists.txt:24 (find_package)"
     directories:
-      source: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-ByNdwu"
-      binary: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-ByNdwu"
+      source: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-VxmT1t"
+      binary: "/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-VxmT1t"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/usr/bin/clang-scan-deps"
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
@@ -3150,11 +3015,11 @@ events:
       variable: "JNI_INCLUDE_PATH2_OPTIONAL"
       cached: true
       stdout: |
-        Change Dir: '/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-ByNdwu'
+        Change Dir: '/home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-VxmT1t'
         
-        Run Build Command(s): /usr/bin/ninja -v cmTC_24594
-        [1/2] /usr/bin/clang -DJNI_INCLUDE_PATH2_OPTIONAL -I/home/marco/AndroidStudioProjects/e_office_mobile/linux/flutter/ephemeral/.plugin_symlinks/jni/src/../third_party  -MD -MT CMakeFiles/cmTC_24594.dir/src.c.o -MF CMakeFiles/cmTC_24594.dir/src.c.o.d -o CMakeFiles/cmTC_24594.dir/src.c.o -c /home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-ByNdwu/src.c
-        [2/2] : && /usr/bin/clang   CMakeFiles/cmTC_24594.dir/src.c.o -o cmTC_24594   && :
+        Run Build Command(s): /usr/bin/ninja -v cmTC_d4f78
+        [1/2] /usr/bin/clang -DJNI_INCLUDE_PATH2_OPTIONAL -I/home/marco/AndroidStudioProjects/e_office_mobile/linux/flutter/ephemeral/.plugin_symlinks/jni/src/../third_party  -MD -MT CMakeFiles/cmTC_d4f78.dir/src.c.o -MF CMakeFiles/cmTC_d4f78.dir/src.c.o.d -o CMakeFiles/cmTC_d4f78.dir/src.c.o -c /home/marco/AndroidStudioProjects/e_office_mobile/build/linux/x64/debug/CMakeFiles/CMakeScratch/TryCompile-VxmT1t/src.c
+        [2/2] : && /usr/bin/clang   CMakeFiles/cmTC_d4f78.dir/src.c.o -o cmTC_d4f78   && :
         
       exitCode: 0
 ...
