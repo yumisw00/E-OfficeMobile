@@ -1,410 +1,506 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:dio/dio.dart';
+import '../../core/constants/app_config.dart';
+import '../../core/network/api_endpoints.dart';
+import '../../core/network/dio_client.dart';
 import '../../data/models/surat_model.dart';
 import '../../domain/providers/surat_provider.dart';
+import '../widgets/signature_pad.dart';
+import '../widgets/custom_app_bar.dart';
+
 class DetailSuratScreen extends ConsumerStatefulWidget {
   final String idSurat;
-  const DetailSuratScreen({super.key, required this.idSurat});
+  final String? actionType;
+
+  const DetailSuratScreen({
+    super.key,
+    required this.idSurat,
+    this.actionType,
+  });
 
   @override
   ConsumerState<DetailSuratScreen> createState() => _DetailSuratScreenState();
 }
 
 class _DetailSuratScreenState extends ConsumerState<DetailSuratScreen> {
+  String? _authToken;
+
   @override
   void initState() {
     super.initState();
+    _loadToken();
+  }
+
+  Future<void> _loadToken() async {
+    final storage = ref.read(secureStorageProvider);
+    _authToken = await storage.read(key: AppConfig.authTokenKey);
   }
 
   @override
   Widget build(BuildContext context) {
-    final suratMasukAsync = ref.watch(suratMasukProvider);
-    final currentSurat = suratMasukAsync.maybeWhen(
-      data: (list) =>
-          list.firstWhere((s) => s.id == widget.idSurat, orElse: () => throw Exception('Surat tidak ditemukan')),
-      orElse: () => throw Exception('Data surat belum tersedia'),
-    );
-    final isApproved = currentSurat.status == 'selesai';
-    
-    // ASUMSI-API: Fetch timeline secara paralel
-    final timelineAsync = ref.watch(suratTimelineProvider(widget.idSurat));
+    final detailAsync = ref.watch(suratDetailProvider((id: widget.idSurat, type: widget.actionType)));
+    final trackingAsync = ref.watch(trackingProvider((id: widget.idSurat, type: widget.actionType)));
+    final topPadding = MediaQuery.of(context).padding.top + kToolbarHeight + 16.0;
 
-    return Scaffold(
-      appBar: AppBar(title: Text(currentSurat.nomorSurat)),
-      body: RefreshIndicator(
-        onRefresh: () async {
-           ref.invalidate(suratTimelineProvider(widget.idSurat));
-           return ref.read(suratMasukProvider.notifier).refresh();
-        },
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _buildMetadataCard(context, currentSurat),
-              const SizedBox(height: 16),
-              timelineAsync.when(
-                data: (events) => _buildTrackingCard(context, currentSurat, events),
-                loading: () => const Center(child: Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: CircularProgressIndicator(),
-                )),
-                error: (err, st) => Text('Gagal memuat timeline: $err'),
-              ),
-            ],
-          ),
-        ),
+    return detailAsync.when(
+      loading: () => Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: const CustomAppBar(title: 'Memuat Detail...'),
+        body: const Center(child: CircularProgressIndicator()),
       ),
-      bottomNavigationBar: isApproved
-          ? null 
-          : Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
+      error: (err, st) {
+        final isPermissionError = err.toString().contains('PERM_403');
+        return Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: const CustomAppBar(title: 'Detail Surat'),
+          body: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: () =>
-                          _showDisposisiSheet(context, ref, currentSurat),
-                      icon: const Icon(Icons.send_outlined),
-                      label: const Text('Disposisi'),
-                      style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                      ),
-                    ),
+                  Icon(
+                    isPermissionError ? Icons.lock_person_rounded : Icons.error_outline_rounded,
+                    size: 64,
+                    color: isPermissionError ? Colors.orange : Colors.red,
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: FilledButton(
-                      onPressed: () {
-                        _showApprovalModal(context, currentSurat);
-                      },
-                      style: FilledButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        backgroundColor: const Color(0xFF27AE60),
-                      ),
-                      child: const Text(
-                        'Setujui',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                  const SizedBox(height: 16),
+                  Text(
+                    isPermissionError ? 'Akses Ditolak' : 'Terjadi Kesalahan',
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
+                  const SizedBox(height: 8),
+                  Text(
+                    isPermissionError 
+                      ? 'Akun grup Pimpinan belum diberi izin (permission) untuk mengakses fitur detail surat ini. Silakan hubungi admin sistem.'
+                      : err.toString().replaceAll('Exception: ', ''),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                  if (!isPermissionError) ...[
+                    const SizedBox(height: 24),
+                    ElevatedButton(
+                      onPressed: () => ref.invalidate(suratDetailProvider((id: widget.idSurat, type: widget.actionType))),
+                      child: const Text('Coba Lagi'),
+                    ),
+                  ],
                 ],
               ),
             ),
-    );
-  }
-  void _showDisposisiSheet(
-    BuildContext context,
-    WidgetRef ref,
-    SuratModel surat,
-  ) {
-    String? selectedTujuan;
-    final instruksiController = TextEditingController();
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setModalState) {
-            return Padding(
-              padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-                left: 24,
-                right: 24,
-                top: 24,
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'Instruksi Disposisi',
-                      style: Theme.of(context).textTheme.headlineSmall
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 24),
-                    DropdownButtonFormField<String>(
-                      decoration: const InputDecoration(
-                        labelText: 'Tujuan Disposisi',
-                        border: OutlineInputBorder(),
-                      ),
-                      initialValue: selectedTujuan,
-                      items:
-                          [
-                                "Manajer IT",
-                                "Divisi Umum",
-                                "Keuangan",
-                                "SDM",
-                                "Legal",
-                              ]
-                              .map(
-                                (e) =>
-                                    DropdownMenuItem(value: e, child: Text(e)),
-                              )
-                              .toList(),
-                      onChanged: (value) =>
-                          setModalState(() => selectedTujuan = value),
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      controller: instruksiController,
-                      maxLines: 3,
-                      decoration: const InputDecoration(
-                        labelText: 'Catatan Instruksi',
-                        border: OutlineInputBorder(),
-                        alignLabelWithHint: true,
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    FilledButton(
-                      onPressed: () {
-                        if (selectedTujuan != null) {
-                          // TODO: Implementasi disposisi dengan API call yang benar
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Disposisi ke $selectedTujuan terkirim')),
-                          );
-                          context.pop();
-                        }
-                      },
-                      child: const Text('Kirim Disposisi'),
-                    ),
-                    const SizedBox(height: 16),
-                  ],
-                ),
-              ),
-            );
-          },
+          ),
         );
       },
-    );
-  }
-  void _showApprovalModal(BuildContext context, SuratModel surat) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.outlineVariant,
-                  borderRadius: BorderRadius.circular(2),
-                ),
+      data: (currentSurat) {
+        if (currentSurat == null) {
+          return Scaffold(
+            extendBodyBehindAppBar: true,
+            appBar: const CustomAppBar(title: 'Detail Surat'),
+            body: const Center(child: Text('Data surat tidak ditemukan')),
+          );
+        }
+
+        return Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: CustomAppBar(
+            title: currentSurat.nomorSurat,
+          ),
+          body: RefreshIndicator(
+            edgeOffset: topPadding,
+            onRefresh: () async {
+              ref.invalidate(suratDetailProvider((id: widget.idSurat, type: widget.actionType)));
+              ref.invalidate(trackingProvider((id: widget.idSurat, type: widget.actionType)));
+              await ref.read(myActionsProvider.notifier).refresh();
+              HapticFeedback.mediumImpact();
+            },
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: EdgeInsets.fromLTRB(16.0, topPadding, 16.0, 120.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _buildMetadataCard(context, currentSurat),
+                  const SizedBox(height: 16),
+                  trackingAsync.when(
+                    data: (events) => _buildTrackingCard(context, currentSurat, events),
+                    loading: () => const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(24.0),
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                    error: (err, st) => Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text('Gagal memuat riwayat: $err'),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                ],
               ),
-              const SizedBox(height: 24),
-              const Icon(
-                Icons.check_circle_outline_rounded,
-                color: Color(0xFF27AE60),
-                size: 64,
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Persetujuan Digital Berhasil',
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xFF27AE60),
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                'Surat dengan nomor ${surat.nomorSurat} telah berhasil ditandatangani secara digital.',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              const SizedBox(height: 24),
-              QrImageView(
-                data: 'VERIFIED-${surat.nomorSurat}-2026',
-                version: QrVersions.auto,
-                size: 200.0,
-                backgroundColor: Colors.white,
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton.tonal(
-                  onPressed: () => context.pop(),
-                  child: const Text('Tutup'),
-                ),
-              ),
-              const SizedBox(height: 16),
-            ],
+            ),
           ),
         );
       },
     );
   }
-  Widget _buildMetadataCard(BuildContext context, SuratModel currentSurat) {
+
+  Widget _buildMetadataCard(BuildContext context, SuratModel surat) {
     return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              children: [
+                Chip(
+                  label: Text(surat.actionType?.toUpperCase() ?? 'SURAT'),
+                  backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                  labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
+                ),
+                const Spacer(),
+                Text(
+                  DateFormat('dd MMM yyyy').format(surat.tanggalDiterima),
+                  style: const TextStyle(color: Colors.grey, fontSize: 12),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
             Text(
-              'Informasi Surat',
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+              surat.perihal,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            const Divider(),
-            _buildInfoRow('Asal Surat', currentSurat.asalSurat, currentSurat),
-            _buildInfoRow(
-              'Tanggal Diterima',
-              DateFormat(
-                'dd MMMM yyyy, HH:mm',
-              ).format(currentSurat.tanggalDiterima),
-              currentSurat,
-            ),
-            _buildInfoRow('Perihal', currentSurat.perihal, currentSurat),
-            _buildInfoRow(
-              'Status',
-              currentSurat.status.replaceAll('_', ' ').toUpperCase(),
-              currentSurat,
-              isStatus: true,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Ringkasan:',
-              style: Theme.of(
-                context,
-              ).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 4),
-            Text(currentSurat.ringkasan),
-            const SizedBox(height: 16),
-            FilledButton.icon(
-              onPressed: () {
-                final filePath = currentSurat.activeFilePath;
-                if (filePath != null && filePath.isNotEmpty) {
-                  context.push('/pdf', extra: filePath);
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Dokumen file belum tersedia untuk surat ini.'),
-                    ),
-                  );
-                }
-              },
-              icon: const Icon(Icons.picture_as_pdf_outlined),
-              label: const Text('Lihat Dokumen'),
-              style: FilledButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 12),
+            const Divider(height: 24),
+            _infoRow('Nomor Surat', surat.nomorSurat),
+            _infoRow('Asal Surat', surat.asalSurat),
+            _infoRow('Pengaju', surat.pemohon ?? '-'),
+            _infoRow('Status', surat.status),
+            if (surat.activeFilePath != null && surat.activeFilePath!.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: () {
+                    HapticFeedback.lightImpact();
+                    context.push('/pdf', extra: surat.activeFilePath);
+                  },
+                  icon: const Icon(Icons.picture_as_pdf_rounded),
+                  label: const Text('Buka Dokumen PDF'),
+                ),
               ),
-            ),
+            ],
+            // Aksi tombol Approval / Disposisi
+            const SizedBox(height: 20),
+            _buildActionSection(context, surat),
           ],
         ),
       ),
     );
   }
-  Widget _buildInfoRow(
-    String label,
-    String value,
-    SuratModel currentSurat, {
-    bool isStatus = false,
-  }) {
+
+  Widget _infoRow(String label, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.only(bottom: 8.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 120,
-            child: Text(
-              '$label:',
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Colors.grey,
-              ),
-            ),
+          SizedBox(width: 100, child: Text(label, style: const TextStyle(color: Colors.grey, fontSize: 13))),
+          const Text(': ', style: TextStyle(color: Colors.grey)),
+          Expanded(child: Text(value, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 13))),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActionSection(BuildContext context, SuratModel surat) {
+    final isApproval = surat.actionType == 'approval';
+    final status = surat.status.toLowerCase();
+
+    if (isApproval) {
+      if (status == 'approved') {
+        return SizedBox(
+          width: double.infinity,
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.teal.shade700, foregroundColor: Colors.white),
+            onPressed: () {
+              HapticFeedback.mediumImpact();
+              _showSignPad(context, surat);
+            },
+            icon: const Icon(Icons.draw_rounded),
+            label: const Text('Tanda Tangan Digital (Sign)'),
           ),
-          Expanded(
-            child: Text(
-              value,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: isStatus ? _getStatusColor(currentSurat.status) : null,
+        );
+      } else {
+        return Row(
+          children: [
+            Expanded(
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Theme.of(context).colorScheme.error,
+                  side: BorderSide(color: Theme.of(context).colorScheme.error),
+                ),
+                onPressed: () {
+                  HapticFeedback.lightImpact();
+                  _showRejectDialog(context, surat);
+                },
+                child: const Text('Tolak'),
               ),
             ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  HapticFeedback.mediumImpact();
+                  _showApproveConfirm(context, surat);
+                },
+                child: const Text('Setujui'),
+              ),
+            ),
+          ],
+        );
+      }
+    } else {
+      // Disposisi
+      return SizedBox(
+        width: double.infinity,
+        child: ElevatedButton.icon(
+          onPressed: () {
+            HapticFeedback.mediumImpact();
+            _showCompleteDisposisiDialog(context, surat);
+          },
+          icon: const Icon(Icons.check_circle_outline_rounded),
+          label: const Text('Selesaikan Disposisi'),
+        ),
+      );
+    }
+  }
+
+  Widget _buildTrackingCard(BuildContext context, SuratModel surat, List<TimelineEvent> events) {
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Riwayat / Tracking', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            const Divider(height: 20),
+            if (events.isEmpty)
+              const Text('Belum ada riwayat tracking.', style: TextStyle(color: Colors.grey))
+            else
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: events.length,
+                itemBuilder: (context, index) {
+                  final event = events[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 12.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              width: 12,
+                              height: 12,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: index == 0 ? Theme.of(context).colorScheme.primary : Colors.grey.shade400,
+                              ),
+                            ),
+                            if (index < events.length - 1)
+                              Container(
+                                width: 2,
+                                height: 35,
+                                color: Colors.grey.shade300,
+                              ),
+                          ],
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(event.status, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                              const SizedBox(height: 2),
+                              if (event.catatan != null && event.catatan!.isNotEmpty)
+                                Text(event.catatan!, style: const TextStyle(fontSize: 12)),
+                              Text(
+                                '${event.pelaku} • ${DateFormat('dd/MM/yy HH:mm').format(event.tanggal)}',
+                                style: TextStyle(fontSize: 10, color: Colors.grey.shade600),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // --- ACTIONS ---
+
+  void _showApproveConfirm(BuildContext context, SuratModel surat) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Setujui Surat'),
+        content: Text('Apakah Anda yakin ingin menyetujui surat nomor ${surat.nomorSurat}?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              HapticFeedback.lightImpact();
+              context.pop();
+            },
+            child: const Text('Tidak'),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              HapticFeedback.mediumImpact();
+              context.pop();
+              try {
+                await ref.read(suratRepositoryProvider).approveSurat(surat.id);
+                if (context.mounted) {
+                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Surat berhasil disetujui. Silakan lakukan tanda tangan digital.')));
+                   ref.read(myActionsProvider.notifier).refresh();
+                }
+              } catch (e) {
+                if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Gagal: $e')));
+              }
+            },
+            child: const Text('Setujui'),
           ),
         ],
       ),
     );
   }
-  Widget _buildTrackingCard(BuildContext context, SuratModel currentSurat, List<TimelineEvent> events) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Tracking Disposisi',
-              style: Theme.of(
-                context,
-              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-            ),
-            const Divider(),
-            if (events.isEmpty)
-              const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text('Belum ada riwayat perjalanan surat'),
-              )
-            else
-              Stepper(
-                physics: const NeverScrollableScrollPhysics(),
-                currentStep: events.length - 1,
-                controlsBuilder: _nullControlsBuilder,
-                steps: events.map((event) => Step(
-                  title: Text(event.judul),
-                  subtitle: Text('${event.pelaku} - ${DateFormat('dd MMM yyyy HH:mm').format(event.tanggal)}'),
-                  content: Text(event.deskripsi),
-                  isActive: true,
-                  state: event.status == 'selesai' ? StepState.complete : StepState.indexed,
-                )).toList(),
-              ),
-          ],
+
+  void _showRejectDialog(BuildContext context, SuratModel surat) {
+    final controller = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Tolak Surat'),
+        content: TextField(
+          controller: controller,
+          decoration: const InputDecoration(labelText: 'Catatan Revisi', border: OutlineInputBorder()),
+          maxLines: 3,
         ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              HapticFeedback.lightImpact();
+              context.pop();
+            },
+            child: const Text('Tidak'),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.error, foregroundColor: Colors.white),
+            onPressed: () async {
+              if (controller.text.isEmpty) return;
+              HapticFeedback.mediumImpact();
+              context.pop();
+              try {
+                await ref.read(suratRepositoryProvider).rejectSurat(surat.id, controller.text);
+                if (context.mounted) {
+                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Surat berhasil ditolak.')));
+                   ref.read(myActionsProvider.notifier).refresh();
+                }
+              } catch (e) {
+                if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Gagal: $e')));
+              }
+            },
+            child: const Text('Tolak'),
+          ),
+        ],
       ),
     );
   }
-  static Widget _nullControlsBuilder(
-    BuildContext context,
-    ControlsDetails details,
-  ) {
-    return const SizedBox.shrink();
+
+  void _showCompleteDisposisiDialog(BuildContext context, SuratModel surat) {
+    final controller = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Selesaikan Disposisi'),
+        content: TextField(
+          controller: controller,
+          decoration: const InputDecoration(labelText: 'Catatan Penyelesaian', border: OutlineInputBorder()),
+          maxLines: 3,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              HapticFeedback.lightImpact();
+              context.pop();
+            },
+            child: const Text('Batal'),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              if (controller.text.isEmpty) return;
+              HapticFeedback.mediumImpact();
+              context.pop();
+              try {
+                await ref.read(suratRepositoryProvider).completeDisposisi(surat.id, catatan: controller.text);
+                if (context.mounted) {
+                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Disposisi berhasil diselesaikan.')));
+                   ref.read(myActionsProvider.notifier).refresh();
+                }
+              } catch (e) {
+                if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Gagal: $e')));
+              }
+            },
+            child: const Text('Selesaikan'),
+          ),
+        ],
+      ),
+    );
   }
-  Color _getStatusColor(String status) {
-    switch (status.toUpperCase()) {
-      case 'BELUM_DIBACA':
-        return Theme.of(context).colorScheme.primary;
-      case 'DISPOSISI':
-        return const Color(0xFFE67E22);
-      case 'SELESAI':
-        return const Color(0xFF27AE60);
-      default:
-        return const Color(0xFF7F8C8D);
-    }
+
+  void _showSignPad(BuildContext context, SuratModel surat) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Container(
+        height: MediaQuery.of(context).size.height * 0.75,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+        ),
+        child: SignaturePad(
+          onSaved: (signatureBase64) async {
+            HapticFeedback.mediumImpact();
+            context.pop();
+            try {
+              await ref.read(myActionsProvider.notifier).signSurat(surat.id, signatureBase64);
+              if (context.mounted) {
+                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Tanda tangan digital berhasil disimpan.')));
+                 ref.read(myActionsProvider.notifier).refresh();
+              }
+            } catch (e) {
+              if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Gagal Tanda Tangan: $e')));
+            }
+          },
+        ),
+      ),
+    );
   }
 }
